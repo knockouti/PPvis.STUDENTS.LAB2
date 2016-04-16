@@ -14,12 +14,15 @@ public class MainWindow {
         mainFrame.setSize(700, 700);
         mainFrame.setLayout(new BorderLayout());
         mainFrame.add(this.addJToolBar(), BorderLayout.LINE_START);
+        mainFrame.add(this.addJMenuBar(), BorderLayout.PAGE_START);
         mainFrame.setVisible(true);
+        mainFrame.setLocationRelativeTo(null);
+
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
 
-    public JToolBar addJToolBar() {
+    private JToolBar addJToolBar() {
         JToolBar mainToolBar = new JToolBar();
         mainToolBar.setSize(400, 400);
         mainToolBar.setVisible(true);
@@ -31,13 +34,27 @@ public class MainWindow {
 
     }
 
-    public JButton addButtonOpen() {
+    private JMenuBar addJMenuBar() {
+        JMenuBar mainMenBar = new JMenuBar();
+        JMenu mainFile = new JMenu("Файл");
+        JMenuItem mainOpen = new JMenuItem("Открыть");
+        JMenuItem mainSave = new JMenuItem("Сохранить");
+        JMenuItem mainExit = new JMenuItem("Выйти");
+        mainFile.add(mainOpen);
+        mainFile.add(mainSave);
+        mainFile.add(mainExit);
+        mainMenBar.add(mainFile);
+        return mainMenBar;
+    }
+
+    private JButton addButtonOpen() {
         JButton buttonOpen = new JButton(new ImageIcon("images\\open.png"));
         return buttonOpen;
     }
 
-    public JButton addButonSave() {
+    private JButton addButonSave() {
         JButton buttonSave = new JButton(new ImageIcon("images\\save.png"));
         return buttonSave;
     }
+
 }
