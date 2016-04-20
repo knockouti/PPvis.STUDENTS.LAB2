@@ -1,9 +1,14 @@
 package View;
 
+import Controller.ControllerButton;
 import javafx.scene.control.DatePicker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  * Created by Игорь on 15.04.2016.
@@ -16,26 +21,34 @@ public class DialogInput {
     JTextField textFieldFaculty;
     JTextField textFieldComposition;
     JTextField textFieldPosition;
+    ControllerButton controllerButton;
 
-    public DialogInput() {
+    public DialogInput(ControllerButton controllerButton) {
+        this.controllerButton = controllerButton;
         inputFrame = new JFrame("Добавить нового студента");
         inputFrame.setSize(520, 430);
-        inputFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        inputFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE
+        );
         inputFrame.setLayout(new BorderLayout());
         inputFrame.setLocationRelativeTo(null);
         inputFrame.add(this.addmainPanelDialog());
-        inputFrame.setVisible(true);
 
     }
 
-    private JPanel addpanelForName() {
+    public void setBool(boolean bool) {
+        inputFrame.setVisible(bool);
+    }
+
+    public JPanel addpanelForName() {
         JPanel panelForName = new JPanel();
         panelForName.setLayout(new BoxLayout(panelForName, BoxLayout.X_AXIS));
         panelForName.setAlignmentX(JComponent.LEFT_ALIGNMENT);
         JLabel labelName = new JLabel("Ф.И.О.:");
         panelForName.setMaximumSize(new Dimension(400, 60));
         labelName.setMaximumSize(new Dimension(150, 30));
+
         textFieldName = new JTextField();
+        textFieldName.setText("");
         textFieldName.setFont(textFieldName.getFont().deriveFont(15f));
         textFieldName.setMaximumSize(new Dimension(250, 30));
         panelForName.add(labelName);
@@ -135,7 +148,22 @@ public class DialogInput {
 
     private JButton addButtonTack() {
         JButton buttonTack = new JButton("Дабваить Студента");
+        buttonTack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controllerButton.setName(textFieldName, textFieldDate, textFieldFootballTeam, textFieldFaculty, textFieldComposition, textFieldPosition);
+                controllerButton.goMainFrame();
+                controllerButton.setTextFielNull(textFieldName);
+                controllerButton.setTextFielNull(textFieldDate);
+                controllerButton.setTextFielNull(textFieldComposition);
+                controllerButton.setTextFielNull(textFieldFaculty);
+                controllerButton.setTextFielNull(textFieldFootballTeam);
+                controllerButton.setTextFielNull(textFieldPosition);
+            }
+        });
         buttonTack.setSize(150, 50);
         return buttonTack;
     }
+
+
 }
