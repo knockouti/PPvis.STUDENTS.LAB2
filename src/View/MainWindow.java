@@ -17,15 +17,15 @@ public class MainWindow {
     TableModel tableModel;
     ControllerButton controllerButton;
 
-    public MainWindow(ControllerButton controllerButton, TableModel tableModel) {
+    public MainWindow(ControllerButton controllerButton) {
         this.controllerButton = controllerButton;
-        this.tableModel = tableModel;
+
         mainFrame = new JFrame("Главное окно");
         mainFrame.setSize(1200, 700);
         mainFrame.setLayout(new BorderLayout());
         mainFrame.add(this.addJToolBar(), BorderLayout.LINE_START);
         mainFrame.add(this.addJMenuBar(), BorderLayout.PAGE_START);
-        mainFrame.add(this.addTableForManWindow(), BorderLayout.CENTER);
+
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -34,8 +34,10 @@ public class MainWindow {
     public void setBool(boolean bool) {
         mainFrame.setVisible(bool);
     }
-
-    private JScrollPane addTableForManWindow() {
+public  void addTableModel(View.TableModel tableModel){
+    mainFrame.add(this.addTableForManWindow(tableModel), BorderLayout.CENTER);
+}
+    private JScrollPane addTableForManWindow(View.TableModel tableModel) {
 
 JPanel panelForTable = new JPanel();
         panelForTable.setSize(600,600);

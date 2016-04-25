@@ -21,6 +21,8 @@ public class DialogInput {
     JTextField textFieldFaculty;
     JTextField textFieldComposition;
     JTextField textFieldPosition;
+    JTextField textFieldSurname;
+    JTextField textFieldPatronomic;
     ControllerButton controllerButton;
 
     public DialogInput(ControllerButton controllerButton) {
@@ -43,7 +45,7 @@ public class DialogInput {
         JPanel panelForName = new JPanel();
         panelForName.setLayout(new BoxLayout(panelForName, BoxLayout.X_AXIS));
         panelForName.setAlignmentX(JComponent.LEFT_ALIGNMENT);
-        JLabel labelName = new JLabel("Ф.И.О.:");
+        JLabel labelName = new JLabel("Имя:");
         panelForName.setMaximumSize(new Dimension(400, 60));
         labelName.setMaximumSize(new Dimension(150, 30));
 
@@ -57,11 +59,49 @@ public class DialogInput {
 
     }
 
+    public JPanel addPanelForSurname() {
+        JPanel panelForSurname = new JPanel();
+        panelForSurname.setLayout(new BoxLayout(panelForSurname, BoxLayout.X_AXIS));
+        panelForSurname.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+        JLabel labelName = new JLabel("Фамилия");
+        panelForSurname.setMaximumSize(new Dimension(400, 60));
+        labelName.setMaximumSize(new Dimension(150, 30));
+
+        textFieldSurname = new JTextField();
+        textFieldSurname.setText("");
+        textFieldSurname.setFont(textFieldSurname.getFont().deriveFont(15f));
+        textFieldSurname.setMaximumSize(new Dimension(250, 30));
+        panelForSurname.add(labelName);
+        panelForSurname.add(textFieldSurname);
+        return panelForSurname;
+
+    }
+
+    public JPanel addPanelForPatronomic() {
+        JPanel panelForPatronomic = new JPanel();
+        panelForPatronomic.setLayout(new BoxLayout(panelForPatronomic, BoxLayout.X_AXIS));
+        panelForPatronomic.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+        JLabel labelName = new JLabel("Отчество:");
+        panelForPatronomic.setMaximumSize(new Dimension(400, 60));
+        labelName.setMaximumSize(new Dimension(150, 30));
+
+        textFieldPatronomic = new JTextField();
+        textFieldPatronomic.setText("");
+        textFieldPatronomic.setFont(textFieldPatronomic.getFont().deriveFont(15f));
+        textFieldPatronomic.setMaximumSize(new Dimension(250, 30));
+        panelForPatronomic.add(labelName);
+        panelForPatronomic.add(textFieldPatronomic);
+        return panelForPatronomic;
+
+    }
+
     private JPanel addmainPanelDialog() {
         JPanel mainPanelDialog = new JPanel();
         mainPanelDialog.setLayout(new BoxLayout(mainPanelDialog, BoxLayout.Y_AXIS));
         mainPanelDialog.setSize(500, 500);
+        mainPanelDialog.add(this.addPanelForSurname());
         mainPanelDialog.add(this.addpanelForName());
+        mainPanelDialog.add(this.addPanelForPatronomic());
         mainPanelDialog.add(this.addpanelForDate());
         mainPanelDialog.add(this.addPanelFootballTeam());
         mainPanelDialog.add(this.addPanelFaculty());
@@ -151,14 +191,24 @@ public class DialogInput {
         buttonTack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controllerButton.setName(textFieldName, textFieldDate, textFieldFootballTeam, textFieldFaculty, textFieldComposition, textFieldPosition);
+controllerButton.addNewStudent();
+                controllerButton.setSurname(textFieldSurname);
+                controllerButton.setName(textFieldName);
+                controllerButton.setPatronomic(textFieldPatronomic);
+                controllerButton.setPosition(textFieldPosition);
+                controllerButton.setComposition(textFieldComposition);
+                controllerButton.setNameFootballTeam(textFieldFootballTeam);
+                controllerButton.setFaculty(textFieldFaculty);
+controllerButton.setDataTable();
                 controllerButton.goMainFrame();
-                controllerButton.setTextFielNull(textFieldName);
+                controllerButton.setTextFielNull(textFieldSurname);
                 controllerButton.setTextFielNull(textFieldDate);
                 controllerButton.setTextFielNull(textFieldComposition);
                 controllerButton.setTextFielNull(textFieldFaculty);
                 controllerButton.setTextFielNull(textFieldFootballTeam);
                 controllerButton.setTextFielNull(textFieldPosition);
+                controllerButton.setTextFielNull(textFieldName);
+                controllerButton.setTextFielNull(textFieldPatronomic);
             }
         });
         buttonTack.setSize(150, 50);

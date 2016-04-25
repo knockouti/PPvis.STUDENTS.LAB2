@@ -16,5 +16,4 @@ public interface ControllerInterface {
 
     void setTextFielNull(JTextField textField);
 
-    void setName(JTextField textField1, JTextField textField2, JTextField textField3, JTextField textField4, JTextField textField5, JTextField textField6);
 }

@@ -1,14 +1,13 @@
 package Controller;
 
-import Model.TableModel;
-import View.Delete;
-import View.DialogInput;
-import View.MainWindow;
-import View.Search;
+import Model.Faculty;
+import Model.FootbalTeam;
+import Model.Student;
+import View.*;
 
-import javax.sql.rowset.serial.SerialArray;
 import javax.swing.*;
 import java.awt.*;
+
 
 /**
  * Created by Игорь on 19.04.2016.
@@ -16,15 +15,21 @@ import java.awt.*;
 public class ControllerButton implements ControllerInterface {
     MainWindow mainWindow;
     TableModel tableModel;
+    Student student;
     DialogInput dialogInput;
     Delete delete;
     Search search;
-    String[] addStr;
+    FootbalTeam footbalTeam;
+    Faculty faculty;
 
 
-    public ControllerButton(TableModel tableModel) {
-        this.tableModel = tableModel;
-        mainWindow = new MainWindow(this, tableModel);
+    public ControllerButton() {
+
+        mainWindow = new MainWindow(this);
+        tableModel = new View.TableModel();
+        mainWindow.addTableModel(tableModel);
+
+
         mainWindow.setBool(true);
         dialogInput = new DialogInput(this);
         delete = new Delete(this);
@@ -33,17 +38,52 @@ public class ControllerButton implements ControllerInterface {
 
     }
 
-    public void setName(JTextField textField1, JTextField textField2, JTextField textField3, JTextField textField4, JTextField textField5, JTextField textField6) {
-        addStr = new String[6];
-        addStr[0] = textField1.getText();
-        addStr[1] = textField2.getText();
-        addStr[2] = textField3.getText();
-        addStr[3] = textField4.getText();
-        addStr[4] = textField5.getText();
-        addStr[5] = textField6.getText();
-        tableModel.addDataTable(addStr);
+    public void addNewStudent() {
+        student = new Student();
+        footbalTeam = new FootbalTeam();
+        faculty = new Faculty();
     }
 
+    public void setName(JTextField textField) {
+        student.setName(textField.getText());
+
+    }
+    public void setFaculty(JTextField textField) {
+        faculty.setNameFaculty(textField.getText());
+
+    }
+
+    public void setSurname(JTextField textField) {
+        student.setSurname(textField.getText());
+
+    }
+
+    public void setPatronomic(JTextField textField) {
+        student.setPatronomic(textField.getText());
+
+
+    }
+    public void setNameFootballTeam(JTextField textField) {
+        footbalTeam.setNameFootballTeam(textField.getText());
+
+
+    }
+    public void setPosition(JTextField textField) {
+        student.setPosition(textField.getText());
+
+
+    }
+    public void setComposition(JTextField textField) {
+        student.setComposition(textField.getText());
+
+
+    }
+
+    public void setDataTable() {
+        tableModel.addData(student);
+        tableModel.addData(footbalTeam);
+        tableModel.addData(faculty);
+    }
 
     @Override
     public void add() {
