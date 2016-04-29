@@ -24,7 +24,7 @@ public class Student {
     private Faculty faculty;
     private FootbalTeam footbalTeam;
     private Date dateBirthday;
-
+   private String strDateBirthday;
     public Student() {
         faculty = new Faculty();
         footbalTeam = new FootbalTeam();
@@ -59,9 +59,9 @@ public class Student {
         return patronomic;
     }
 
-    public Date getDateBirthday() {
+    public String getDateBirthday() {
 
-        return dateBirthday;
+        return strDateBirthday;
     }
 
     public String getPosition() {
@@ -83,7 +83,7 @@ public class Student {
     public void setDateBirthday(Date dateBirthday) {
 
         this.dateBirthday = dateBirthday;
-        String strDateBirthday = DateFormat.getDateInstance().format(dateBirthday);
+       strDateBirthday = DateFormat.getDateInstance().format(dateBirthday);
     }
 
     public void setPatronomic(String string) {
