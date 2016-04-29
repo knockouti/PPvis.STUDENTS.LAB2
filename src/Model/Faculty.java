@@ -5,10 +5,12 @@ package Model;
  */
 public class Faculty {
     String nameFaculty;
-    public String getNameFaculty(){
+
+    public String getNameFaculty() {
         return nameFaculty;
     }
-    public void setNameFaculty(String nameFaculty){
+
+    public void setNameFaculty(String nameFaculty) {
         this.nameFaculty = nameFaculty;
     }
 }

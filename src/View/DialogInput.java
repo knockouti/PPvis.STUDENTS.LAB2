@@ -1,12 +1,15 @@
 package View;
 
 import Controller.ControllerButton;
+import com.toedter.calendar.*;
 import javafx.scene.control.DatePicker;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -17,20 +20,20 @@ public class DialogInput {
     JFrame inputFrame;
     JTextField textFieldName;
     JTextField textFieldFootballTeam;
-    JTextField textFieldDate;
     JTextField textFieldFaculty;
     JTextField textFieldComposition;
     JTextField textFieldPosition;
     JTextField textFieldSurname;
     JTextField textFieldPatronomic;
+    JDateChooser dateChooser;
     ControllerButton controllerButton;
+
 
     public DialogInput(ControllerButton controllerButton) {
         this.controllerButton = controllerButton;
         inputFrame = new JFrame("Добавить нового студента");
         inputFrame.setSize(520, 430);
-        inputFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE
-        );
+        inputFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         inputFrame.setLayout(new BorderLayout());
         inputFrame.setLocationRelativeTo(null);
         inputFrame.add(this.addmainPanelDialog());
@@ -48,7 +51,6 @@ public class DialogInput {
         JLabel labelName = new JLabel("Имя:");
         panelForName.setMaximumSize(new Dimension(400, 60));
         labelName.setMaximumSize(new Dimension(150, 30));
-
         textFieldName = new JTextField();
         textFieldName.setText("");
         textFieldName.setFont(textFieldName.getFont().deriveFont(15f));
@@ -66,7 +68,6 @@ public class DialogInput {
         JLabel labelName = new JLabel("Фамилия");
         panelForSurname.setMaximumSize(new Dimension(400, 60));
         labelName.setMaximumSize(new Dimension(150, 30));
-
         textFieldSurname = new JTextField();
         textFieldSurname.setText("");
         textFieldSurname.setFont(textFieldSurname.getFont().deriveFont(15f));
@@ -84,7 +85,6 @@ public class DialogInput {
         JLabel labelName = new JLabel("Отчество:");
         panelForPatronomic.setMaximumSize(new Dimension(400, 60));
         labelName.setMaximumSize(new Dimension(150, 30));
-
         textFieldPatronomic = new JTextField();
         textFieldPatronomic.setText("");
         textFieldPatronomic.setFont(textFieldPatronomic.getFont().deriveFont(15f));
@@ -118,11 +118,11 @@ public class DialogInput {
         panelForDate.setMaximumSize(new Dimension(400, 60));
         JLabel labelDate = new JLabel("Дата Рождения:");
         labelDate.setMaximumSize(new Dimension(150, 30));
-        textFieldDate = new JTextField();
-        textFieldDate.setFont(textFieldDate.getFont().deriveFont(15f));
-        textFieldDate.setMaximumSize(new Dimension(250, 30));
+        dateChooser = new JDateChooser();
+        dateChooser.setLocale(Locale.US);
+        dateChooser.setMaximumSize(new Dimension(250, 30));
         panelForDate.add(labelDate);
-        panelForDate.add(textFieldDate);
+        panelForDate.add(dateChooser);
         return panelForDate;
     }
 
@@ -191,29 +191,29 @@ public class DialogInput {
         buttonTack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-controllerButton.addNewStudent();
+                controllerButton.addNewStudent();
                 controllerButton.setSurname(textFieldSurname);
                 controllerButton.setName(textFieldName);
                 controllerButton.setPatronomic(textFieldPatronomic);
                 controllerButton.setPosition(textFieldPosition);
                 controllerButton.setComposition(textFieldComposition);
-                controllerButton.setNameFootballTeam(textFieldFootballTeam);
+                controllerButton.setFootbalTeam(textFieldFootballTeam);
                 controllerButton.setFaculty(textFieldFaculty);
-controllerButton.setDataTable();
+                controllerButton.setData(dateChooser);
+
+                controllerButton.setDataTable();
                 controllerButton.goMainFrame();
                 controllerButton.setTextFielNull(textFieldSurname);
-                controllerButton.setTextFielNull(textFieldDate);
                 controllerButton.setTextFielNull(textFieldComposition);
                 controllerButton.setTextFielNull(textFieldFaculty);
                 controllerButton.setTextFielNull(textFieldFootballTeam);
                 controllerButton.setTextFielNull(textFieldPosition);
                 controllerButton.setTextFielNull(textFieldName);
                 controllerButton.setTextFielNull(textFieldPatronomic);
+                controllerButton.setNullDate(dateChooser);
             }
         });
         buttonTack.setSize(150, 50);
         return buttonTack;
     }
-
-
 }

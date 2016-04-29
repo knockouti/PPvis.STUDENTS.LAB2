@@ -7,20 +7,17 @@ import Model.Student;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Игорь on 22.04.2016.
  */
 public class TableModel extends AbstractTableModel {
-    private int columnCount = 6;
-    public int n=0;
-    Student student;
-    TableModel tableModel;
-    ControllerButton controllerButton;
-
-    ArrayList<Student> oneStudent;
-    ArrayList<FootbalTeam> oneFootbalTeam;
-    ArrayList<Faculty> oneFaculty;
+    public static final int FIO_COL = 0;
+    private int  columnCount = 6;
+    List<Student>oneStudent;
+    List<FootbalTeam> oneFootbalTeam;
+    List<Faculty> oneFaculty;
 
     public TableModel() {
 
@@ -32,7 +29,7 @@ public class TableModel extends AbstractTableModel {
     @Override
     public int getRowCount() {
         return oneStudent.size();
-        //        return dataArrayList.size();
+
     }
 
     @Override
@@ -43,7 +40,7 @@ public class TableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex) {
         switch (columnIndex) {
-            case 0:
+            case FIO_COL:
                 return "Ф.И.О";
             case 1:
                 return "Дата Рождения";
@@ -62,14 +59,14 @@ public class TableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
-            case 0:
+            case FIO_COL:
                 return (oneStudent.get(rowIndex).getSurname() + " " + oneStudent.get(rowIndex).getName() + " " + oneStudent.get(rowIndex).getPatronomic());
             case 1:
                 return oneStudent.get(rowIndex).getDateBirthday();
             case 2:
-                return  oneFootbalTeam.get(rowIndex).getNameFootballTeam();
+                return oneStudent.get(rowIndex).getFootballTeam();
             case 3:
-                return  oneFaculty.get(rowIndex).getNameFaculty();
+                return oneStudent.get(rowIndex).getFaculty();
             case 4:
                 return oneStudent.get(rowIndex).getComposition();
             case 5:
@@ -78,20 +75,13 @@ public class TableModel extends AbstractTableModel {
         return "";
     }
 
-  public void addData(Student student){
+    public void addData(Student student) {
 
-      oneStudent.add(student);
-fireTableDataChanged();
+        oneStudent.add(student);
+        fireTableDataChanged();
 
-  }
-    public void addData(FootbalTeam footballTeam){
-        oneFootbalTeam.add(footballTeam);
-        fireTableDataChanged();
     }
-    public void addData(Faculty faculty){
-        oneFaculty.add(faculty);
-        fireTableDataChanged();
-    }
+
 
 
 }

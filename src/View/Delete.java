@@ -62,7 +62,6 @@ public class Delete {
 
     private JPanel addTablePanelDelete() {
         JPanel panelTable = new JPanel();
-
         panelTable.setBackground(Color.black);
         return panelTable;
     }
@@ -126,6 +125,7 @@ public class Delete {
 
     private JCheckBox addCheackBoxPositionComposition() {
         checkBoxPositionComposition = new JCheckBox("Удаление по позиции и составу:");
+
         checkBoxPositionComposition.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -141,6 +141,10 @@ public class Delete {
             }
         });
         return checkBoxPositionComposition;
+
+    }
+
+    public void searchNameFootballTeam() {
 
     }
 

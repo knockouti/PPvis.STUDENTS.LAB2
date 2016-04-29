@@ -31,7 +31,7 @@ public class Search {
         frameSearch.setLayout(new BorderLayout());
         frameSearch.setLocationRelativeTo(null);
         frameSearch.add(this.addMainSearchpanel(), BorderLayout.LINE_START);
-        frameSearch.add(this.addTablePanel(), BorderLayout.CENTER);
+
 
     }
 
@@ -45,13 +45,6 @@ public class Search {
         panelMainSearch.add(this.addPanelSearchFacultyName());
         panelMainSearch.add(this.buttonSearch());
         return panelMainSearch;
-    }
-
-    private JPanel addTablePanel() {
-        JPanel panelTable = new JPanel();
-        panelTable.setSize(600, 500);
-        panelTable.setBackground(Color.black);
-        return panelTable;
     }
 
 
@@ -127,6 +120,19 @@ public class Search {
         panelForCheakBoxPositionComposition.add(panelForComposition);
         return panelForCheakBoxPositionComposition;
 
+    }
+
+    public void addTableModel(View.TableModel tableModel) {
+        frameSearch.add(this.addTableForPanelSearch(tableModel), BorderLayout.CENTER);
+    }
+
+    private JScrollPane addTableForPanelSearch(View.TableModel tableModel) {
+
+
+        JTable tableForSearch = new JTable(tableModel);
+        JScrollPane scrollPaneMainTable = new JScrollPane(tableForSearch);
+
+        return scrollPaneMainTable;
     }
 
     private JPanel addPanelSearchNameFootballTeam() {

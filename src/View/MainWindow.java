@@ -34,13 +34,15 @@ public class MainWindow {
     public void setBool(boolean bool) {
         mainFrame.setVisible(bool);
     }
-public  void addTableModel(View.TableModel tableModel){
-    mainFrame.add(this.addTableForManWindow(tableModel), BorderLayout.CENTER);
-}
+
+    public void addTableModel(View.TableModel tableModel) {
+        mainFrame.add(this.addTableForManWindow(tableModel), BorderLayout.CENTER);
+    }
+
     private JScrollPane addTableForManWindow(View.TableModel tableModel) {
 
-JPanel panelForTable = new JPanel();
-        panelForTable.setSize(600,600);
+        JPanel panelForTable = new JPanel();
+        panelForTable.setSize(600, 600);
         JTable tableForMainMindow = new JTable(tableModel);
         JScrollPane scrollPaneMainTable = new JScrollPane(tableForMainMindow);
 
