@@ -18,6 +18,13 @@ public class TableModel extends AbstractTableModel {
     List<Student>oneStudent;
     List<FootbalTeam> oneFootbalTeam;
     List<Faculty> oneFaculty;
+    private final int visibleSize = 20; //количество записей на странице
+    private int pageCount;   //количество страниц
+    private int ostatok;     //количество записей на последней странице
+    private int current = 1;   //текущая страница
+    private int visible = 0;
+    private boolean flag = true;  //флаг для отреления первой и последней страницы
+
 
     public TableModel() {
 
@@ -81,6 +88,7 @@ public class TableModel extends AbstractTableModel {
         fireTableDataChanged();
 
     }
+
 
 
 
