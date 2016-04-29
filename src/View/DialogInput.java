@@ -199,7 +199,7 @@ public class DialogInput {
                 controllerButton.setComposition(textFieldComposition);
                 controllerButton.setFootbalTeam(textFieldFootballTeam);
                 controllerButton.setFaculty(textFieldFaculty);
-                controllerButton.setData(dateChooser);
+
 
                 controllerButton.setDataTable();
                 controllerButton.goMainFrame();
