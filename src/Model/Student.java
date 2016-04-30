@@ -18,7 +18,6 @@ public class Student {
     private String name;
     private String surname;
     private String patronomic;
-
     private String position;
     private String composition;
     private Faculty faculty;

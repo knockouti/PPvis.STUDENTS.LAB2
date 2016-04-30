@@ -12,6 +12,7 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -29,6 +30,7 @@ public class MainWindow {
     TableModel tableModel;
     ControllerButton controllerButton;
     JTable tableForMainMindow;
+
     public MainWindow(ControllerButton controllerButton) {
         this.controllerButton = controllerButton;
 
@@ -111,29 +113,53 @@ public class MainWindow {
                     Element tableEl = doc.createElement("table");
                     doc.appendChild(tableEl);
 
+
                     TableModel model = tableForMainMindow.getModel();
                     TableColumnModel columns = tableForMainMindow.getColumnModel();
 
                     for (int i = 0; i < model.getRowCount(); i++) {
-                        Element rowEl = doc.createElement("row");
-                        tableEl.appendChild(rowEl);
-
-                        for (int j = 0; j < columns.getColumnCount(); j++) {
-                            TableColumn col = columns.getColumn(j);
-                            String header = col.getHeaderValue().toString();
-                            String value = model.getValueAt(i, j).toString();
-                            Element cellEl = doc.createElement("cell");
-                            Attr colAttr = doc.createAttribute("colName");
-                            cellEl.setAttributeNode(colAttr);
-                            rowEl.appendChild(cellEl);
-                            colAttr.appendChild(doc.createTextNode(header));
-                            cellEl.appendChild(doc.createTextNode(value));
-                        }
+                            Element rowEl = doc.createElement("row");
+                            tableEl.appendChild(rowEl);
+                            String strValueName = model.getValueAt(i, 0).toString();
+                            Element elementSurNameP = doc.createElement("name");
+                            rowEl.appendChild(elementSurNameP);
+                            elementSurNameP.appendChild(doc.createTextNode(strValueName));
+                            String strValueDate = model.getValueAt(i, 1).toString();
+                            Element elementDate = doc.createElement("date");
+                            rowEl.appendChild(elementDate);
+                            elementDate.appendChild(doc.createTextNode(strValueDate));
+                            String strValueFootball = model.getValueAt(i, 2).toString();
+                            Element elementFootball = doc.createElement("footballteam");
+                            rowEl.appendChild(elementFootball);
+                            elementFootball.appendChild(doc.createTextNode(strValueFootball));
+                            String strValueFaculty = model.getValueAt(i, 3).toString();
+                            Element elementFaculty = doc.createElement("faculty");
+                            rowEl.appendChild(elementFaculty);
+                            elementFaculty.appendChild(doc.createTextNode(strValueFaculty));
+                            String strValuePos = model.getValueAt(i, 4).toString();
+                            Element elementPos = doc.createElement("pos");
+                            rowEl.appendChild(elementPos);
+                            elementPos.appendChild(doc.createTextNode(strValuePos));
+                            String strValueComp = model.getValueAt(i, 5).toString();
+                            Element elementComp = doc.createElement("comp");
+                            rowEl.appendChild(elementComp);
+                        elementComp.appendChild(doc.createTextNode(strValueComp));
+//                        for (int j = 0; j < columns.getColumnCount(); j++) {
+//                            TableColumn col = columns.getColumn(j);
+//                            String header = col.getHeaderValue().toString();
+//                            String value = model.getValueAt(i, j).toString();
+//                            Element cellEl = doc.createElement("cell");
+//                            Attr colAttr = doc.createAttribute("colName");
+//                            cellEl.setAttributeNode(colAttr);
+//                            rowEl.appendChild(cellEl);
+//                            colAttr.appendChild(doc.createTextNode(header));
+//                            cellEl.appendChild(doc.createTextNode(value));
+//                        }
                     }
-
-                    TransformerFactory tFactory = TransformerFactory
-                            .newInstance();
+                    TransformerFactory tFactory = TransformerFactory.newInstance();
+                    doc.normalizeDocument();
                     Transformer transformer = tFactory.newTransformer();
+                    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
                     DOMSource source = new DOMSource(doc);
                     StreamResult result = new StreamResult(file);
                     transformer.transform(source, result);
