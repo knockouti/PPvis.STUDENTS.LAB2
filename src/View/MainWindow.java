@@ -106,7 +106,7 @@ public class MainWindow {
                 try {
                     DocumentBuilderFactory dbfLoad = DocumentBuilderFactory.newInstance();
                     DocumentBuilder builder = dbfLoad.newDocumentBuilder();
-                    File file = new File("table.xml");
+                    File file = new File("src\\XMLfiles\\table.xml");
                     Document docLoad = builder.parse(file);
                     NodeList name = docLoad.getElementsByTagName("name");
                     NodeList surname = docLoad.getElementsByTagName("surname");
@@ -146,7 +146,7 @@ public class MainWindow {
                 try {
                     DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
                     DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-                    File file = new File("table.xml");
+                    File file = new File("src\\XMLfiles\\table.xml");
                     if (!file.exists()) {
                         file.createNewFile();
                     }
