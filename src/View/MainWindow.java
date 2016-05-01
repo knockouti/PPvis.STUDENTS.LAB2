@@ -2,10 +2,9 @@ package View;
 
 import Controller.ControllerButton;
 import javafx.scene.control.Tab;
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.w3c.dom.*;
 
+import javax.print.Doc;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -21,13 +20,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Игорь on 15.04.2016.
  */
 public class MainWindow {
     JFrame mainFrame;
-    TableModel tableModel;
+    View.TableModel tableModel;
     ControllerButton controllerButton;
     JTable tableForMainMindow;
 
@@ -49,6 +53,7 @@ public class MainWindow {
     }
 
     public void addTableModel(View.TableModel tableModel) {
+        this.tableModel = tableModel;
         mainFrame.add(this.addTableForManWindow(tableModel), BorderLayout.CENTER);
     }
 
@@ -92,6 +97,45 @@ public class MainWindow {
 
     private JButton addButtonOpen() {
         JButton buttonOpen = new JButton(new ImageIcon("images\\open.png"));
+
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+
+        buttonOpen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    DocumentBuilderFactory dbfLoad = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder builder = dbfLoad.newDocumentBuilder();
+                    File file = new File("table.xml");
+                    Document docLoad = builder.parse(file);
+                    NodeList name = docLoad.getElementsByTagName("name");
+                    NodeList surname = docLoad.getElementsByTagName("surname");
+                    NodeList patronomic = docLoad.getElementsByTagName("patr");
+                    NodeList data = docLoad.getElementsByTagName("date");
+                    NodeList footballTeam = docLoad.getElementsByTagName("footballteam");
+                    NodeList faculty = docLoad.getElementsByTagName("faculty");
+                    NodeList position = docLoad.getElementsByTagName("pos");
+                    NodeList composition = docLoad.getElementsByTagName("comp");
+                    NodeList listRow = docLoad.getElementsByTagName("row");
+                    for (int i = 0; i < listRow.getLength(); i++) {
+                        controllerButton.addNewStudent();
+                        controllerButton.getStudent().setName(name.item(i).getFirstChild().getNodeValue());
+                        controllerButton.getStudent().setSurname(surname.item(i).getFirstChild().getNodeValue());
+                        controllerButton.getStudent().setPatronomic(patronomic.item(i).getFirstChild().getNodeValue());
+                        controllerButton.getStudent().setDateBirthday(format.parse(data.item(i).getFirstChild().getNodeValue()));
+                        controllerButton.getStudent().setFootbalTeam(footballTeam.item(i).getFirstChild().getNodeValue());
+                        controllerButton.getStudent().setFaculty(faculty.item(i).getFirstChild().getNodeValue());
+                        controllerButton.getStudent().setPosition(position.item(i).getFirstChild().getNodeValue());
+                        controllerButton.getStudent().setComposition(composition.item(i).getFirstChild().getNodeValue());
+                        controllerButton.setDataTable();
+                    }
+                } catch
+                        (Exception exception) {
+                    exception.printStackTrace();
+                }
+
+            }
+        });
         return buttonOpen;
     }
 
@@ -100,49 +144,50 @@ public class MainWindow {
         buttonSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    DocumentBuilderFactory f = DocumentBuilderFactory
-                            .newInstance();
-                    DocumentBuilder builder = f.newDocumentBuilder();
+                    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
                     File file = new File("table.xml");
-
                     if (!file.exists()) {
                         file.createNewFile();
                     }
-
                     Document doc = builder.newDocument();
                     Element tableEl = doc.createElement("table");
                     doc.appendChild(tableEl);
-
-
-                    TableModel model = tableForMainMindow.getModel();
                     TableColumnModel columns = tableForMainMindow.getColumnModel();
-
-                    for (int i = 0; i < model.getRowCount(); i++) {
-                            Element rowEl = doc.createElement("row");
-                            tableEl.appendChild(rowEl);
-                            String strValueName = model.getValueAt(i, 0).toString();
-                            Element elementSurNameP = doc.createElement("name");
-                            rowEl.appendChild(elementSurNameP);
-                            elementSurNameP.appendChild(doc.createTextNode(strValueName));
-                            String strValueDate = model.getValueAt(i, 1).toString();
-                            Element elementDate = doc.createElement("date");
-                            rowEl.appendChild(elementDate);
-                            elementDate.appendChild(doc.createTextNode(strValueDate));
-                            String strValueFootball = model.getValueAt(i, 2).toString();
-                            Element elementFootball = doc.createElement("footballteam");
-                            rowEl.appendChild(elementFootball);
-                            elementFootball.appendChild(doc.createTextNode(strValueFootball));
-                            String strValueFaculty = model.getValueAt(i, 3).toString();
-                            Element elementFaculty = doc.createElement("faculty");
-                            rowEl.appendChild(elementFaculty);
-                            elementFaculty.appendChild(doc.createTextNode(strValueFaculty));
-                            String strValuePos = model.getValueAt(i, 4).toString();
-                            Element elementPos = doc.createElement("pos");
-                            rowEl.appendChild(elementPos);
-                            elementPos.appendChild(doc.createTextNode(strValuePos));
-                            String strValueComp = model.getValueAt(i, 5).toString();
-                            Element elementComp = doc.createElement("comp");
-                            rowEl.appendChild(elementComp);
+                    for (int i = 0; i < tableModel.getRowCount(); i++) {
+                        Element rowEl = doc.createElement("row");
+                        tableEl.appendChild(rowEl);
+                        String strValueName = tableModel.getOneStudent().get(i).getName();
+                        Element elementName = doc.createElement("name");
+                        rowEl.appendChild(elementName);
+                        elementName.appendChild(doc.createTextNode(strValueName));
+                        String strValueSurname = tableModel.getOneStudent().get(i).getSurname();
+                        Element elementSurName = doc.createElement("surname");
+                        rowEl.appendChild(elementSurName);
+                        elementSurName.appendChild(doc.createTextNode(strValueSurname));
+                        String strValuePat = tableModel.getOneStudent().get(i).getPatronomic();
+                        Element elementPat = doc.createElement("patr");
+                        rowEl.appendChild(elementPat);
+                        elementPat.appendChild(doc.createTextNode(strValuePat));
+                        String strValueDate = tableModel.getOneStudent().get(i).getDateBirthday();
+                        Element elementDate = doc.createElement("date");
+                        rowEl.appendChild(elementDate);
+                        elementDate.appendChild(doc.createTextNode(strValueDate));
+                        String strValueFootball = tableModel.getOneStudent().get(i).getFootballTeam();
+                        Element elementFootball = doc.createElement("footballteam");
+                        rowEl.appendChild(elementFootball);
+                        elementFootball.appendChild(doc.createTextNode(strValueFootball));
+                        String strValueFaculty = tableModel.getOneStudent().get(i).getFaculty();
+                        Element elementFaculty = doc.createElement("faculty");
+                        rowEl.appendChild(elementFaculty);
+                        elementFaculty.appendChild(doc.createTextNode(strValueFaculty));
+                        String strValuePos = tableModel.getOneStudent().get(i).getPosition();
+                        Element elementPos = doc.createElement("pos");
+                        rowEl.appendChild(elementPos);
+                        elementPos.appendChild(doc.createTextNode(strValuePos));
+                        String strValueComp = tableModel.getOneStudent().get(i).getComposition();
+                        Element elementComp = doc.createElement("comp");
+                        rowEl.appendChild(elementComp);
                         elementComp.appendChild(doc.createTextNode(strValueComp));
 //                        for (int j = 0; j < columns.getColumnCount(); j++) {
 //                            TableColumn col = columns.getColumn(j);

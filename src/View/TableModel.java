@@ -1,6 +1,5 @@
 package View;
 
-import Controller.ControllerButton;
 import Model.Faculty;
 import Model.FootbalTeam;
 import Model.Student;
@@ -14,8 +13,13 @@ import java.util.List;
  */
 public class TableModel extends AbstractTableModel {
     public static final int FIO_COL = 0;
-    private int  columnCount = 6;
-    List<Student>oneStudent;
+    private static final int DATE_BIRTH = 1;
+    private static final int FOOT = 2;
+    private static final int FAC = 3;
+    private static final int COMP = 4;
+    private static final int POSIT = 5;
+    private int columnCount = 6;
+    List<Student> oneStudent;
     List<FootbalTeam> oneFootbalTeam;
     List<Faculty> oneFaculty;
     private final int visibleSize = 20; //количество записей на странице
@@ -29,8 +33,11 @@ public class TableModel extends AbstractTableModel {
     public TableModel() {
 
         oneStudent = new ArrayList<>();
-        oneFootbalTeam = new ArrayList<>();
-        oneFaculty = new ArrayList<>();
+
+    }
+
+    public ArrayList<Student> getOneStudent() {
+        return (ArrayList<Student>) oneStudent;
     }
 
     @Override
@@ -49,15 +56,15 @@ public class TableModel extends AbstractTableModel {
         switch (columnIndex) {
             case FIO_COL:
                 return "Ф.И.О";
-            case 1:
+            case DATE_BIRTH:
                 return "Дата Рождения";
-            case 2:
+            case FOOT:
                 return "Футбольная команда";
-            case 3:
+            case FAC:
                 return "Факультет";
-            case 4:
+            case COMP:
                 return "Состав";
-            case 5:
+            case POSIT:
                 return "Позиция";
         }
         return "";
@@ -68,15 +75,15 @@ public class TableModel extends AbstractTableModel {
         switch (columnIndex) {
             case FIO_COL:
                 return (oneStudent.get(rowIndex).getSurname() + " " + oneStudent.get(rowIndex).getName() + " " + oneStudent.get(rowIndex).getPatronomic());
-            case 1:
+            case DATE_BIRTH:
                 return oneStudent.get(rowIndex).getDateBirthday();
-            case 2:
+            case FOOT:
                 return oneStudent.get(rowIndex).getFootballTeam();
-            case 3:
+            case FAC:
                 return oneStudent.get(rowIndex).getFaculty();
-            case 4:
+            case COMP:
                 return oneStudent.get(rowIndex).getComposition();
-            case 5:
+            case POSIT:
                 return oneStudent.get(rowIndex).getPosition();
         }
         return "";
@@ -88,8 +95,6 @@ public class TableModel extends AbstractTableModel {
         fireTableDataChanged();
 
     }
-
-
 
 
 }

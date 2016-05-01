@@ -36,7 +36,9 @@ public class ControllerButton implements ControllerInterface {
         student = new Student();
 
     }
-
+    public  Student getStudent(){
+        return  student;
+    }
     public void setName(JTextField textField) {
         student.setName(textField.getText());
     }
