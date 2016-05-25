@@ -8,9 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import static View.EnumPosition.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
@@ -20,13 +23,13 @@ public class DialogInput {
     JFrame inputFrame;
     JTextField textFieldName;
     JTextField textFieldFootballTeam;
-    JTextField textFieldFaculty;
-    JTextField textFieldComposition;
-    JTextField textFieldPosition;
     JTextField textFieldSurname;
     JTextField textFieldPatronomic;
     JDateChooser dateChooser;
     ControllerButton controllerButton;
+    JComboBox comboBoxPosition;
+    JComboBox comboBoxComposition;
+    JComboBox comboBoxFaculty;
 
 
     public DialogInput(ControllerButton controllerButton) {
@@ -141,48 +144,64 @@ public class DialogInput {
         return panelFootbalTeam;
     }
 
-    private JPanel addPanelFaculty() {
+    public JPanel addPanelFaculty() {
         JPanel panelFaculty = new JPanel();
         panelFaculty.setLayout(new BoxLayout(panelFaculty, BoxLayout.X_AXIS));
         panelFaculty.setAlignmentX(JComponent.LEFT_ALIGNMENT);
         panelFaculty.setMaximumSize(new Dimension(400, 60));
         JLabel labelFaculty = new JLabel("Факультет:");
         labelFaculty.setMaximumSize(new Dimension(150, 30));
-        textFieldFaculty = new JTextField();
-        textFieldFaculty.setFont(textFieldFaculty.getFont().deriveFont(15f));
-        textFieldFaculty.setMaximumSize(new Dimension(250, 30));
+        comboBoxFaculty = new JComboBox();
+        comboBoxFaculty.setModel(new DefaultComboBoxModel<>(EnumFaculty.values()));
+        comboBoxFaculty.setMaximumSize(new Dimension(250, 30));
+        comboBoxFaculty.setSelectedIndex(-1);
         panelFaculty.add(labelFaculty);
-        panelFaculty.add(textFieldFaculty);
+        panelFaculty.add(comboBoxFaculty);
         return panelFaculty;
     }
+public  JComboBox getComboBoxFaculty(){
+    return comboBoxFaculty;
+}
 
-    private JPanel addPanelComposition() {
+    public  JComboBox getComboBoxPosition(){
+        return comboBoxPosition;
+    }
+    public  JComboBox getComboBoxComposition(){
+        return comboBoxComposition;
+    }
+    public JPanel addPanelComposition() {
         JPanel panelComposition = new JPanel();
         panelComposition.setLayout(new BoxLayout(panelComposition, BoxLayout.X_AXIS));
         panelComposition.setAlignmentX(JComponent.LEFT_ALIGNMENT);
         panelComposition.setMaximumSize(new Dimension(400, 60));
         JLabel labelCompositon = new JLabel("Состав:");
         labelCompositon.setMaximumSize(new Dimension(150, 30));
-        textFieldComposition = new JTextField();
-        textFieldComposition.setFont(textFieldComposition.getFont().deriveFont(15f));
-        textFieldComposition.setMaximumSize(new Dimension(250, 30));
+        comboBoxComposition = new JComboBox();
+        comboBoxComposition.setModel(new DefaultComboBoxModel<>(EnumComposition.values()));
+        comboBoxComposition.setSelectedIndex(-1);
+        comboBoxComposition.setMaximumSize(new Dimension(250, 30));
         panelComposition.add(labelCompositon);
-        panelComposition.add(textFieldComposition);
+        panelComposition.add(comboBoxComposition);
         return panelComposition;
     }
 
-    private JPanel addPanelPosition() {
+    public JPanel addPanelPosition() {
         JPanel panelPosition = new JPanel();
         panelPosition.setLayout(new BoxLayout(panelPosition, BoxLayout.X_AXIS));
         panelPosition.setAlignmentX(JComponent.LEFT_ALIGNMENT);
         panelPosition.setMaximumSize(new Dimension(400, 60));
         JLabel labelPosition = new JLabel("Позиция:");
         labelPosition.setMaximumSize(new Dimension(150, 30));
-        textFieldPosition = new JTextField();
-        textFieldPosition.setFont(textFieldPosition.getFont().deriveFont(13f));
-        textFieldPosition.setMaximumSize(new Dimension(250, 30));
+        comboBoxPosition = new JComboBox();
+        comboBoxPosition.setModel(new DefaultComboBoxModel<>(EnumPosition.values()));
+        comboBoxPosition.setMaximumSize(new Dimension(250, 30));
+        comboBoxPosition.setSelectedIndex(-1);
+
+//        textFieldPosition = new JTextField();
+//        textFieldPosition.setFont(textFieldPosition.getFont().deriveFont(13f));
+//        textFieldPosition.setMaximumSize(new Dimension(250, 30));
         panelPosition.add(labelPosition);
-        panelPosition.add(textFieldPosition);
+        panelPosition.add(comboBoxPosition);
         return panelPosition;
     }
 
@@ -195,22 +214,19 @@ public class DialogInput {
                 controllerButton.setSurname(textFieldSurname);
                 controllerButton.setName(textFieldName);
                 controllerButton.setPatronomic(textFieldPatronomic);
-                controllerButton.setPosition(textFieldPosition);
-                controllerButton.setComposition(textFieldComposition);
+                controllerButton.setPosition(comboBoxPosition);
+                controllerButton.setComposition(comboBoxComposition);
                 controllerButton.setFootbalTeam(textFieldFootballTeam);
-                controllerButton.setFaculty(textFieldFaculty);
+                controllerButton.setFaculty(comboBoxFaculty);
                 controllerButton.setData(dateChooser);
-
                 controllerButton.setDataTable();
-                controllerButton.goMainFrame();
+
                 controllerButton.setTextFielNull(textFieldSurname);
-                controllerButton.setTextFielNull(textFieldComposition);
-                controllerButton.setTextFielNull(textFieldFaculty);
                 controllerButton.setTextFielNull(textFieldFootballTeam);
-                controllerButton.setTextFielNull(textFieldPosition);
                 controllerButton.setTextFielNull(textFieldName);
                 controllerButton.setTextFielNull(textFieldPatronomic);
                 controllerButton.setNullDate(dateChooser);
+                controllerButton.goMainFrame();
             }
         });
         buttonTack.setSize(150, 50);

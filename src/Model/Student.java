@@ -1,6 +1,8 @@
 package Model;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
@@ -24,9 +26,11 @@ public class Student {
     private FootbalTeam footbalTeam;
     private Date dateBirthday;
    private String strDateBirthday;
+    SimpleDateFormat simpleDateFormat;
     public Student() {
         faculty = new Faculty();
         footbalTeam = new FootbalTeam();
+        simpleDateFormat = new SimpleDateFormat("dd.MM.yyy");
     }
 
     public String getFootballTeam() {
@@ -79,12 +83,19 @@ public class Student {
         this.name = string;
     }
 
-    public void setDateBirthday(Date dateBirthday) {
+    public void setDateBirthday(Date dateBirthday){
 
-        this.dateBirthday = dateBirthday;
-       strDateBirthday = DateFormat.getDateInstance().format(dateBirthday);
+
+        try {
+            this.dateBirthday = simpleDateFormat.parse(simpleDateFormat.format(dateBirthday));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        strDateBirthday = DateFormat.getDateInstance().format(dateBirthday);
     }
-
+public Date getBirthdayDate(){
+    return dateBirthday;
+}
     public void setPatronomic(String string) {
         this.patronomic = string;
     }

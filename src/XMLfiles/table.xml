@@ -1,13 +1,804 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<table>
-<row>
+<liststudent>
+<student>
+<name>1</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
 <name>2</name>
 <surname>1</surname>
 <patr>3</patr>
-<date>14.05.2016</date>
-<footballteam>4</footballteam>
-<faculty>5</faculty>
-<pos>7</pos>
-<comp>6</comp>
-</row>
-</table>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>3</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>4</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>5</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>6</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>7</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>8</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>9</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>10</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>11</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>12</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>13</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>14</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+    <student>
+        <name>15</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+    <student>
+        <name>16</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+    <student>
+        <name>17</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+    <student>
+        <name>18</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+    <student>
+        <name>19</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+    <student>
+        <name>20</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+    <student>
+        <name>21</name>
+        <surname>1</surname>
+        <patr>3</patr>
+        <date>04.05.2016</date>
+        <footballteam>
+            <namefootballteam>5</namefootballteam>
+        </footballteam>
+        <faculty>
+            <namefaculty>ФИТУ</namefaculty>
+        </faculty>
+        <pos>голкипер</pos>
+        <comp>основа</comp>
+    </student>
+
+
+
+<student>
+<name>22</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>23</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>24</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>25</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>26</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>27</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>28</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>29</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>30</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>31</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>32</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>33</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>34</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>35</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>36</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>37</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>38</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>39</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>40</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>41</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>42</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>43</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>44</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>45</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>46</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>47</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>48</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>49</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>50</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>51</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>52</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>53</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>54</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>55</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>6</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+<student>
+<name>57</name>
+<surname>1</surname>
+<patr>3</patr>
+<date>04.05.2016</date>
+<footballteam>
+<namefootballteam>5</namefootballteam>
+</footballteam>
+<faculty>
+<namefaculty>ФИТУ</namefaculty>
+</faculty>
+<pos>голкипер</pos>
+<comp>основа</comp>
+</student>
+</liststudent>

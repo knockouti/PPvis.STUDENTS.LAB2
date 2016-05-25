@@ -1,14 +1,10 @@
 package View;
 
 import Controller.ControllerButton;
-import javafx.scene.control.Tab;
 import org.w3c.dom.*;
 
-import javax.print.Doc;
 import javax.swing.*;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -19,11 +15,11 @@ import javax.xml.transform.stream.StreamResult;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -39,12 +35,15 @@ public class MainWindow {
         this.controllerButton = controllerButton;
 
         mainFrame = new JFrame("Главное окно");
+
         mainFrame.setSize(1200, 700);
         mainFrame.setLayout(new BorderLayout());
         mainFrame.add(this.addJToolBar(), BorderLayout.LINE_START);
         mainFrame.add(this.addJMenuBar(), BorderLayout.PAGE_START);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+
 
     }
 
@@ -55,6 +54,8 @@ public class MainWindow {
     public void addTableModel(View.TableModel tableModel) {
         this.tableModel = tableModel;
         mainFrame.add(this.addTableForManWindow(tableModel), BorderLayout.CENTER);
+
+        mainFrame.add(this.panelForStr(), BorderLayout.PAGE_END);
     }
 
     private JScrollPane addTableForManWindow(View.TableModel tableModel) {
@@ -80,6 +81,76 @@ public class MainWindow {
         mainToolBar.add(addButtonSearch());
         return mainToolBar;
 
+    }
+
+    public JPanel panelForStr() {
+        JPanel panelStr = new JPanel(new FlowLayout());
+        JTextField textFieldForVisibleSize = new JTextField();
+        textFieldForVisibleSize.setFont(textFieldForVisibleSize.getFont().deriveFont(15f));
+        textFieldForVisibleSize.setPreferredSize(new Dimension(30, 30));
+        JButton next = new JButton("next");
+        JButton firstElement = new JButton("1");
+        JButton lateElement = new JButton();
+if(tableModel.getOneStudent().size() == 0){
+    lateElement.setText("-");
+}
+        JLabel labelCurrentPage =  new JLabel();
+        labelCurrentPage.setPreferredSize(new Dimension(30,30));
+        labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tableModel.pageUp();
+                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+                tableModel.fireTableDataChanged();
+            }
+        });
+        JButton prev = new JButton("Prev");
+        lateElement.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lateElement.setText(String.valueOf(tableModel.getNubmerStr()));
+                tableModel.setCurrent(tableModel.getNubmerStr());
+                tableModel.pageUp();
+                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+            }
+        });
+        firstElement.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                tableModel.setCurrent(tableModel.getNubmerStr());
+                tableModel.goFirstStr();
+                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+            }
+        });
+        prev.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tableModel.pageDown();
+                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+                tableModel.fireTableDataChanged();
+            }
+        });
+        textFieldForVisibleSize.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    tableModel.setVisibleSize(Integer.valueOf(textFieldForVisibleSize.getText()).intValue());
+                    labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+                }
+            }
+        });
+
+
+        panelStr.add(prev);
+        panelStr.add(firstElement);
+      panelStr.add(labelCurrentPage);
+        panelStr.add(lateElement);
+        panelStr.add(next);
+        panelStr.add(textFieldForVisibleSize);
+
+        return panelStr;
     }
 
     private JMenuBar addJMenuBar() {
@@ -112,11 +183,11 @@ public class MainWindow {
                     NodeList surname = docLoad.getElementsByTagName("surname");
                     NodeList patronomic = docLoad.getElementsByTagName("patr");
                     NodeList data = docLoad.getElementsByTagName("date");
-                    NodeList footballTeam = docLoad.getElementsByTagName("footballteam");
-                    NodeList faculty = docLoad.getElementsByTagName("faculty");
+                    NodeList footballTeam = docLoad.getElementsByTagName("namefootballteam");
+                    NodeList faculty = docLoad.getElementsByTagName("namefaculty");
                     NodeList position = docLoad.getElementsByTagName("pos");
                     NodeList composition = docLoad.getElementsByTagName("comp");
-                    NodeList listRow = docLoad.getElementsByTagName("row");
+                    NodeList listRow = docLoad.getElementsByTagName("student");
                     for (int i = 0; i < listRow.getLength(); i++) {
                         controllerButton.addNewStudent();
                         controllerButton.getStudent().setName(name.item(i).getFirstChild().getNodeValue());
@@ -151,11 +222,11 @@ public class MainWindow {
                         file.createNewFile();
                     }
                     Document doc = builder.newDocument();
-                    Element tableEl = doc.createElement("table");
+                    Element tableEl = doc.createElement("liststudent");
                     doc.appendChild(tableEl);
                     TableColumnModel columns = tableForMainMindow.getColumnModel();
-                    for (int i = 0; i < tableModel.getRowCount(); i++) {
-                        Element rowEl = doc.createElement("row");
+                    for (int i = 0; i < tableModel.oneStudent.size(); i++) {
+                        Element rowEl = doc.createElement("student");
                         tableEl.appendChild(rowEl);
                         String strValueName = tableModel.getOneStudent().get(i).getName();
                         Element elementName = doc.createElement("name");
@@ -175,12 +246,18 @@ public class MainWindow {
                         elementDate.appendChild(doc.createTextNode(strValueDate));
                         String strValueFootball = tableModel.getOneStudent().get(i).getFootballTeam();
                         Element elementFootball = doc.createElement("footballteam");
+                        Element nameFootbalTeam = doc.createElement("namefootballteam");
+                        nameFootbalTeam.appendChild(doc.createTextNode(strValueFootball));
+                        elementFootball.appendChild(nameFootbalTeam);
                         rowEl.appendChild(elementFootball);
-                        elementFootball.appendChild(doc.createTextNode(strValueFootball));
+
                         String strValueFaculty = tableModel.getOneStudent().get(i).getFaculty();
                         Element elementFaculty = doc.createElement("faculty");
+                        Element nameFaculty = doc.createElement("namefaculty");
+                        nameFaculty.appendChild(doc.createTextNode(strValueFaculty));
+                        elementFaculty.appendChild(nameFaculty);
                         rowEl.appendChild(elementFaculty);
-                        elementFaculty.appendChild(doc.createTextNode(strValueFaculty));
+
                         String strValuePos = tableModel.getOneStudent().get(i).getPosition();
                         Element elementPos = doc.createElement("pos");
                         rowEl.appendChild(elementPos);
@@ -189,17 +266,6 @@ public class MainWindow {
                         Element elementComp = doc.createElement("comp");
                         rowEl.appendChild(elementComp);
                         elementComp.appendChild(doc.createTextNode(strValueComp));
-//                        for (int j = 0; j < columns.getColumnCount(); j++) {
-//                            TableColumn col = columns.getColumn(j);
-//                            String header = col.getHeaderValue().toString();
-//                            String value = model.getValueAt(i, j).toString();
-//                            Element cellEl = doc.createElement("cell");
-//                            Attr colAttr = doc.createAttribute("colName");
-//                            cellEl.setAttributeNode(colAttr);
-//                            rowEl.appendChild(cellEl);
-//                            colAttr.appendChild(doc.createTextNode(header));
-//                            cellEl.appendChild(doc.createTextNode(value));
-//                        }
                     }
                     TransformerFactory tFactory = TransformerFactory.newInstance();
                     doc.normalizeDocument();

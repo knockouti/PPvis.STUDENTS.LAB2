@@ -1,9 +1,6 @@
 package Main;
 
 import Controller.ControllerButton;
-import Model.Student;
-import View.Delete;
-import View.TableModel;
 
 /**
  * Created by Игорь on 15.04.2016.
