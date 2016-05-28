@@ -119,7 +119,7 @@ public class ControllerButton implements ControllerInterface {
             if ((textFieldName.getText().equals(tableModel.getOneStudent().get(count).getName()) && textFieldSurname.getText().equals(tableModel.getOneStudent().get(count).getSurname()) && textFieldPatronomic.getText().equals(tableModel.getOneStudent().get(count).getPatronomic())) || dateBirthday.equals(tableModel.getOneStudent().get(count).getBirthdayDate())) {
                 searchModel.addData(tableModel.getOneStudent().get(count));
                 searchModel.fireTableDataChanged();
-                deleteStrudent++;
+
 
             }
         }

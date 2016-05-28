@@ -57,7 +57,7 @@ public class Search {
         });
         frameSearch.add(this.addPanelFOrCombobox(), BorderLayout.LINE_START);
         frameSearch.add(this.addMainDeletePanel(), BorderLayout.LINE_END);
-        OutpuStr outpuStr = new OutpuStr(tableModel);
+        OutpuStr outpuStr = new OutpuStr(searchModel);
         frameSearch.add(outpuStr, BorderLayout.PAGE_END);
 
 

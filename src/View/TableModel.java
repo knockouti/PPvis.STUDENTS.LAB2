@@ -49,13 +49,10 @@ public class TableModel extends AbstractTableModel {
 public void setStrStudent(List<Student> strStudent){
     this.strStudent = strStudent;
 }
-//    public void setVisibleSize(int visibleSize) {
-//        this.visibleSize = visibleSize;
-//        strStudent = oneStudent.subList(0, oneStudent.size());
-//        current = 1;
-//        visible = visibleSize;
-//        this.fireTableDataChanged();
-//    }
+    public void setSize(int visibleSize) {
+        this.visibleSize = visibleSize;
+
+    }
 //
 //    public void setCurrent(int current) {
 //        this.current = current;

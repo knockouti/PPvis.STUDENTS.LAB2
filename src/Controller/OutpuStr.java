@@ -23,6 +23,7 @@ public class OutpuStr extends JPanel{
     private TableModel tableModel;
 public OutpuStr(TableModel tableModel){
     this.tableModel =tableModel;
+ strStudent = tableModel.getOneStudent().subList(0, tableModel.getOneStudent().size());
     JTextField textFieldForVisibleSize = new JTextField();
     textFieldForVisibleSize.setFont(textFieldForVisibleSize.getFont().deriveFont(15f));
     textFieldForVisibleSize.setPreferredSize(new Dimension(30, 30));
@@ -89,6 +90,7 @@ public OutpuStr(TableModel tableModel){
 
     public void setVisibleSize(int visibleSize) {
         this.visibleSize = visibleSize;
+        tableModel.setSize(this.visibleSize);
         strStudent = tableModel.getOneStudent().subList(0, tableModel.getOneStudent().size());
         current = 1;
         visible = visibleSize;

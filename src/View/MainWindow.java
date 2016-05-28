@@ -137,7 +137,7 @@ public class MainWindow {
 //            @Override
 //            public void keyPressed(KeyEvent e) {
 //                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//                    tableModel.setVisibleSize(Integer.valueOf(textFieldForVisibleSize.getText()).intValue());
+//                    tableModel.setSize(Integer.valueOf(textFieldForVisibleSize.getText()).intValue());
 //                    labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
 //                }
 //            }
