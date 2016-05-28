@@ -37,12 +37,13 @@ public class Search {
     DialogInput dialogInput;
     TableModel tableModel;
     TableModel searchModel;
-
+    OutpuStr outpuStr;
     public Search(ControllerButton controllerButton) {
         this.controllerButton = controllerButton;
         tableModel = new TableModel();
 
         searchModel = new TableModel();
+        outpuStr = new OutpuStr(searchModel);
         frameSearch = new JFrame("Удаление Элементов");
         frameSearch.setSize(1000, 900);
         dialogInput = new DialogInput(controllerButton);
@@ -57,8 +58,8 @@ public class Search {
         });
         frameSearch.add(this.addPanelFOrCombobox(), BorderLayout.LINE_START);
         frameSearch.add(this.addMainDeletePanel(), BorderLayout.LINE_END);
-        OutpuStr outpuStr = new OutpuStr(searchModel);
-        frameSearch.add(outpuStr, BorderLayout.PAGE_END);
+
+
 
 
     }
@@ -122,8 +123,9 @@ public class Search {
 
 
         JTable tableForSearch = new JTable(tableModel);
+       outpuStr.setTableModel(searchModel);
         JScrollPane scrollPaneMainTable = new JScrollPane(tableForSearch);
-
+        frameSearch.add(outpuStr, BorderLayout.PAGE_END);
         return scrollPaneMainTable;
     }
 
