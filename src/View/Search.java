@@ -1,6 +1,7 @@
 package View;
 
 import Controller.ControllerButton;
+import Controller.OutpuStr;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
@@ -56,65 +57,66 @@ public class Search {
         });
         frameSearch.add(this.addPanelFOrCombobox(), BorderLayout.LINE_START);
         frameSearch.add(this.addMainDeletePanel(), BorderLayout.LINE_END);
-        frameSearch.add(this.panelForStr(), BorderLayout.PAGE_END);
+        OutpuStr outpuStr = new OutpuStr(tableModel);
+        frameSearch.add(outpuStr, BorderLayout.PAGE_END);
 
 
     }
 
-    public JPanel panelForStr() {
-        JPanel panelStr = new JPanel();
-        panelStr.setLayout(new FlowLayout());
-
-        JButton firstElement = new JButton("1");
-        JButton lateElement = new JButton();
-        if(tableModel.getOneStudent().size() == 0){
-            lateElement.setText("-");
-        }
-        JLabel labelCurrentPage =  new JLabel();
-        labelCurrentPage.setPreferredSize(new Dimension(30,30));
-        labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-        lateElement.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lateElement.setText(String.valueOf(searchModel.getNubmerStr()));
-                searchModel.setCurrent(searchModel.getNubmerStr());
-                searchModel.pageUp();
-                labelCurrentPage.setText(String.valueOf(searchModel.getCurrent()));
-            }
-        });
-        firstElement.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                searchModel.setCurrent(searchModel.getNubmerStr());
-                searchModel.goFirstStr();
-                labelCurrentPage.setText(String.valueOf(searchModel.getCurrent()));
-            }
-        });
-        JButton next = new JButton("Next");
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                searchModel.pageUp();
-                searchModel.fireTableDataChanged();
-            }
-        });
-        JButton prev = new JButton("Pred");
-        prev.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                searchModel.pageDown();
-                searchModel.fireTableDataChanged();
-            }
-        });
-        panelStr.add(prev);
-        panelStr.add(firstElement);
-        panelStr.add(labelCurrentPage);
-        panelStr.add(lateElement);
-        panelStr.add(next);
-
-        return panelStr;
-    }
+//    public JPanel panelForStr() {
+//        JPanel panelStr = new JPanel();
+//        panelStr.setLayout(new FlowLayout());
+//
+//        JButton firstElement = new JButton("1");
+//        JButton lateElement = new JButton();
+//        if(tableModel.getOneStudent().size() == 0){
+//            lateElement.setText("-");
+//        }
+//        JLabel labelCurrentPage =  new JLabel();
+//        labelCurrentPage.setPreferredSize(new Dimension(30,30));
+//        labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//        lateElement.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                lateElement.setText(String.valueOf(searchModel.getNubmerStr()));
+//                searchModel.setCurrent(searchModel.getNubmerStr());
+//                searchModel.pageUp();
+//                labelCurrentPage.setText(String.valueOf(searchModel.getCurrent()));
+//            }
+//        });
+//        firstElement.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                searchModel.setCurrent(searchModel.getNubmerStr());
+//                searchModel.goFirstStr();
+//                labelCurrentPage.setText(String.valueOf(searchModel.getCurrent()));
+//            }
+//        });
+//        JButton next = new JButton("Next");
+//        next.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                searchModel.pageUp();
+//                searchModel.fireTableDataChanged();
+//            }
+//        });
+//        JButton prev = new JButton("Pred");
+//        prev.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                searchModel.pageDown();
+//                searchModel.fireTableDataChanged();
+//            }
+//        });
+//        panelStr.add(prev);
+//        panelStr.add(firstElement);
+//        panelStr.add(labelCurrentPage);
+//        panelStr.add(lateElement);
+//        panelStr.add(next);
+//
+//        return panelStr;
+//    }
 
     private JScrollPane addTableForPanelSearch(TableModel tableModel) {
 

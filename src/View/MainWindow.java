@@ -1,6 +1,7 @@
 package View;
 
 import Controller.ControllerButton;
+import Controller.OutpuStr;
 import org.w3c.dom.*;
 
 import javax.swing.*;
@@ -53,9 +54,9 @@ public class MainWindow {
 
     public void addTableModel(View.TableModel tableModel) {
         this.tableModel = tableModel;
-        mainFrame.add(this.addTableForManWindow(tableModel), BorderLayout.CENTER);
-
-        mainFrame.add(this.panelForStr(), BorderLayout.PAGE_END);
+        mainFrame.add(this.addTableForManWindow(this.tableModel), BorderLayout.CENTER);
+        OutpuStr outpuStr = new OutpuStr(tableModel);
+        mainFrame.add(outpuStr, BorderLayout.PAGE_END);
     }
 
     private JScrollPane addTableForManWindow(View.TableModel tableModel) {
@@ -83,75 +84,75 @@ public class MainWindow {
 
     }
 
-    public JPanel panelForStr() {
-        JPanel panelStr = new JPanel(new FlowLayout());
-        JTextField textFieldForVisibleSize = new JTextField();
-        textFieldForVisibleSize.setFont(textFieldForVisibleSize.getFont().deriveFont(15f));
-        textFieldForVisibleSize.setPreferredSize(new Dimension(30, 30));
-        JButton next = new JButton("next");
-        JButton firstElement = new JButton("1");
-        JButton lateElement = new JButton();
-if(tableModel.getOneStudent().size() == 0){
-    lateElement.setText("-");
-}
-        JLabel labelCurrentPage =  new JLabel();
-        labelCurrentPage.setPreferredSize(new Dimension(30,30));
-        labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tableModel.pageUp();
-                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-                tableModel.fireTableDataChanged();
-            }
-        });
-        JButton prev = new JButton("Prev");
-        lateElement.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lateElement.setText(String.valueOf(tableModel.getNubmerStr()));
-                tableModel.setCurrent(tableModel.getNubmerStr());
-                tableModel.pageUp();
-                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-            }
-        });
-        firstElement.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                tableModel.setCurrent(tableModel.getNubmerStr());
-                tableModel.goFirstStr();
-                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-            }
-        });
-        prev.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tableModel.pageDown();
-                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-                tableModel.fireTableDataChanged();
-            }
-        });
-        textFieldForVisibleSize.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    tableModel.setVisibleSize(Integer.valueOf(textFieldForVisibleSize.getText()).intValue());
-                    labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
-                }
-            }
-        });
-
-
-        panelStr.add(prev);
-        panelStr.add(firstElement);
-      panelStr.add(labelCurrentPage);
-        panelStr.add(lateElement);
-        panelStr.add(next);
-        panelStr.add(textFieldForVisibleSize);
-
-        return panelStr;
-    }
+//    public JPanel panelForStr() {
+//        JPanel panelStr = new JPanel(new FlowLayout());
+//        JTextField textFieldForVisibleSize = new JTextField();
+//        textFieldForVisibleSize.setFont(textFieldForVisibleSize.getFont().deriveFont(15f));
+//        textFieldForVisibleSize.setPreferredSize(new Dimension(30, 30));
+//        JButton next = new JButton("next");
+//        JButton firstElement = new JButton("1");
+//        JButton lateElement = new JButton();
+//if(tableModel.getOneStudent().size() == 0){
+//    lateElement.setText("-");
+//}
+//        JLabel labelCurrentPage =  new JLabel();
+//        labelCurrentPage.setPreferredSize(new Dimension(30,30));
+//        labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//        next.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                tableModel.pageUp();
+//                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//                tableModel.fireTableDataChanged();
+//            }
+//        });
+//        JButton prev = new JButton("Prev");
+//        lateElement.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                lateElement.setText(String.valueOf(tableModel.getNubmerStr()));
+//                tableModel.setCurrent(tableModel.getNubmerStr());
+//                tableModel.pageUp();
+//                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//            }
+//        });
+//        firstElement.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//                tableModel.setCurrent(tableModel.getNubmerStr());
+//                tableModel.goFirstStr();
+//                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//            }
+//        });
+//        prev.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                tableModel.pageDown();
+//                labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//                tableModel.fireTableDataChanged();
+//            }
+//        });
+//        textFieldForVisibleSize.addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+//                    tableModel.setVisibleSize(Integer.valueOf(textFieldForVisibleSize.getText()).intValue());
+//                    labelCurrentPage.setText(String.valueOf(tableModel.getCurrent()));
+//                }
+//            }
+//        });
+//
+//
+//        panelStr.add(prev);
+//        panelStr.add(firstElement);
+//      panelStr.add(labelCurrentPage);
+//        panelStr.add(lateElement);
+//        panelStr.add(next);
+//        panelStr.add(textFieldForVisibleSize);
+//
+//        return panelStr;
+//    }
 
     private JMenuBar addJMenuBar() {
         JMenuBar mainMenBar = new JMenuBar();

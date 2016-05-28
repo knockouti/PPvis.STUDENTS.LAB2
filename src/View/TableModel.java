@@ -46,23 +46,25 @@ public class TableModel extends AbstractTableModel {
             return oneStudent.size() % visibleSize;
         }
     }
-
-    public void setVisibleSize(int visibleSize) {
-        this.visibleSize = visibleSize;
-        strStudent = oneStudent.subList(0, oneStudent.size());
-        current = 1;
-        visible = visibleSize;
-        this.fireTableDataChanged();
-    }
-
-    public void setCurrent(int current) {
-        this.current = current;
-    }
-
-    public int getCurrent() {
-
-        return current;
-    }
+public void setStrStudent(List<Student> strStudent){
+    this.strStudent = strStudent;
+}
+//    public void setVisibleSize(int visibleSize) {
+//        this.visibleSize = visibleSize;
+//        strStudent = oneStudent.subList(0, oneStudent.size());
+//        current = 1;
+//        visible = visibleSize;
+//        this.fireTableDataChanged();
+//    }
+//
+//    public void setCurrent(int current) {
+//        this.current = current;
+//    }
+//
+//    public int getCurrent() {
+//
+//        return current;
+//    }
 
     @Override
     public int getColumnCount() {
@@ -107,53 +109,53 @@ public class TableModel extends AbstractTableModel {
         return "";
     }
 
-    public void pageUp() {
-        if (current < oneStudent.size() / visibleSize) {
-            if (visible == 0) {
-                visible = visibleSize;
-            }
-            strStudent = oneStudent.subList(visible, visible + visibleSize);
-            visible += visibleSize;
-            current++;
-        } else if (current == this.getNubmerStr()) {
-            visible = oneStudent.size() - oneStudent.size() % visibleSize;
-            strStudent = oneStudent.subList(visible, visible + oneStudent.size() % visibleSize);
-           ;
-
-        } else if (current > strStudent.size() % visibleSize) {
-            strStudent = oneStudent.subList(visible, visible + oneStudent.size() % visibleSize);
-
-            current++;
-        }
-        fireTableDataChanged();
-    }
-
-    public int getNubmerStr() {
-        if (oneStudent.size() % visibleSize == 0)
-            return oneStudent.size() / visibleSize;
-        else
-            return oneStudent.size() / visibleSize + 1;
-    }
-
-    public void pageDown() {
-
-        if (current != 1) {
-               strStudent = oneStudent.subList(visible - visibleSize, visible);
-               visible -= visibleSize;
-               current--;
-        }
-        fireTableDataChanged();
-    }
-    public void goFirstStr(){
-        if(current!=1){
-            visible=visibleSize;
-            strStudent = oneStudent.subList(visible - visibleSize, visible);
-
-            current=1;
-
-        }
-        fireTableDataChanged();
-    }
+//    public void pageUp() {
+//        if (current < oneStudent.size() / visibleSize) {
+//            if (visible == 0) {
+//                visible = visibleSize;
+//            }
+//            strStudent = oneStudent.subList(visible, visible + visibleSize);
+//            visible += visibleSize;
+//            current++;
+//        } else if (current == this.getNubmerStr()) {
+//            visible = oneStudent.size() - oneStudent.size() % visibleSize;
+//            strStudent = oneStudent.subList(visible, visible + oneStudent.size() % visibleSize);
+//           ;
+//
+//        } else if (current > strStudent.size() % visibleSize) {
+//            strStudent = oneStudent.subList(visible, visible + oneStudent.size() % visibleSize);
+//
+//            current++;
+//        }
+//        fireTableDataChanged();
+//    }
+//
+//    public int getNubmerStr() {
+//        if (oneStudent.size() % visibleSize == 0)
+//            return oneStudent.size() / visibleSize;
+//        else
+//            return oneStudent.size() / visibleSize + 1;
+//    }
+//
+//    public void pageDown() {
+//
+//        if (current != 1) {
+//               strStudent = oneStudent.subList(visible - visibleSize, visible);
+//               visible -= visibleSize;
+//               current--;
+//        }
+//        fireTableDataChanged();
+//    }
+//    public void goFirstStr(){
+//        if(current!=1){
+//            visible=visibleSize;
+//            strStudent = oneStudent.subList(visible - visibleSize, visible);
+//
+//            current=1;
+//
+//        }
+//        fireTableDataChanged();
+//    }
 
 
     public void changelist() {
